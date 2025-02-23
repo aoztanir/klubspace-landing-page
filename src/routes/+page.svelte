@@ -93,7 +93,7 @@
 	</section>
 
 	<!-- Features Section -->
-	<section class="mb-16 grid gap-8 md:grid-cols-3">
+	<section class="mb-16 grid gap-8 md:grid-cols-3" id="services">
 		<Card.Root class="scale-on-hover rounded-[20px] shadow-lg transition-shadow hover:shadow-xl">
 			<Card.Content class="p-8">
 				<div class="mb-6 flex items-center gap-3">

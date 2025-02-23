@@ -13,9 +13,9 @@
 			<ColorSchemeToggle />
 
 			<a href="/" class="text-gray-700 hover:text-gray-900"><Button variant="link">Home</Button></a>
-			<a href="/about" class="text-gray-700 hover:text-gray-900"><Button variant="link">About</Button></a>
-			<a href="/services" class="text-gray-700 hover:text-gray-900"><Button variant="link">Services</Button></a>
-			<a href="/contact" class="text-gray-700 hover:text-gray-900"><Button variant="link">Contact</Button></a>
+
+			<a href="/#services" class="text-gray-700 hover:text-gray-900"><Button variant="link">Services</Button></a>
+			<a href="mailto:aoztanir25@gmail.com" class="text-gray-700 hover:text-gray-900"><Button variant="link">Contact</Button></a>
 		</nav>
 		<div class="md:hidden">
 			<Sheet.Root>
