@@ -1,0 +1,13 @@
+node_modules
+/.svelte-kit
+/build
+supabase
+
+.env
+.env.*
+!.env.example
+
+pnpm-lock.yaml
+
+.DS_Store
+Thumbs.db

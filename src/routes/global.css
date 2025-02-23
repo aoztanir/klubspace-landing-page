@@ -1,0 +1,22 @@
+@import url("https://fonts.googleapis.com/css2?family=DM+Serif+Text:ital@0;1&family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap");
+
+body {
+	font-family: "Inter", sans-serif !important;
+}
+
+.scale-on-hover:hover {
+	transform: scale(1.02);
+	transition: all 0.3s ease;
+}
+.scale-on-hover {
+	transition: all 0.3s ease;
+}
+
+/* h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+	font-family: "DM Serif Text", serif;
+} */
