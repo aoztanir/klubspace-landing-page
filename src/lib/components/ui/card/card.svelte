@@ -5,11 +5,16 @@
 	type $$Props = HTMLAttributes<HTMLDivElement>;
 
 	let className: $$Props["class"] = undefined;
+	import { theme, mode } from "mode-watcher";
+
 	export { className as class };
 </script>
 
 <div
-	class={cn("bg-card text-card-foreground rounded-lg border shadow-sm", className)}
+	class={cn(
+		"rounded-lg border text-card-foreground  shadow-sm dark:border-neutral-800 dark:bg-neutral-900 dark:text-white",
+		className,
+	)}
 	{...$$restProps}
 >
 	<slot />

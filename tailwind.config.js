@@ -7,6 +7,7 @@ import plugin from "tailwindcss/plugin";
 const config = {
 	content: ["./src/**/*.{html,js,svelte,ts}"],
 	safelist: ["dark"],
+	darkMode: "class",
 	theme: {
 		container: {
 			center: true,
