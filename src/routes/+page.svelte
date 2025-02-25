@@ -6,6 +6,8 @@
 	import * as Form from "$lib/components/ui/form";
 	import { toast } from "svelte-sonner";
 	import { Input } from "$lib/components/ui/input";
+	import { fade, fly, scale } from "svelte/transition";
+	import { spring } from "svelte/motion";
 
 	import {
 		ArrowRight,
@@ -27,10 +29,17 @@
 	import "./global.css";
 	import Badge from "$lib/components/ui/badge/badge.svelte";
 	import Footer from "$lib/landingPageComponents/footer.svelte";
+	import Logo from "$lib/Logo/Logo.svelte";
 
 	let name = "";
 	let email = "";
 	let orgName = "";
+	let visible = false;
+
+	// Show content after initial load
+	setTimeout(() => {
+		visible = true;
+	}, 100);
 
 	async function handleSubmit(event: SubmitEvent) {
 		event.preventDefault();
@@ -48,12 +57,10 @@
 
 			if (error) throw error;
 
-			// Reset form
 			name = "";
 			email = "";
 			orgName = "";
 
-			// alert("Thanks for signing up! We'll be in touch soon.");
 			toast.success("Thanks for signing up!", {
 				description: "We'll be in touch soon.",
 			});
@@ -66,276 +73,572 @@
 
 <Header />
 
-<main class="container mx-auto max-w-6xl px-4 py-12">
+<main class="container relative mx-auto max-w-6xl px-7 py-8 sm:py-12">
 	<!-- Hero Section with Early Access -->
-	<section class="mb-20 mt-16">
-		<div class="mb-[75px] grid grid-cols-1 items-center gap-8 md:grid-cols-2">
-			<div>
-				<div class="flex flex-row items-center gap-2">
-					<img src="/klubSpaceLogo.png" alt="Klubspace Logo" class="h-24 w-24" />
-					<h1 class="font-extraextrabold my-0 text-7xl font-black">lubSpace</h1>
-				</div>
-				<p class="mt-2 text-xl">The go-to platform for managing your organization</p>
-			</div>
-			<div class="flex justify-center">
-				<img
-					src="https://media.istockphoto.com/id/1346226355/photo/university-teacher-talking-to-her-asian-female-student-at-campus.jpg?s=612x612&w=0&k=20&c=478mNCgBJpVxaU-ffJedWgSCWA5IgMcglJQObD2mQ0g="
-					alt="Organization Management Illustration"
-					class="w-full max-w-md rounded-xl shadow-xl"
-				/>
-			</div>
-		</div>
+	<section class="mx-4 mb-16 mt-8 sm:mb-20 sm:mt-16" id="early-access">
+		{#if visible}
+			<div class="mb-[50px] grid grid-cols-1 items-center gap-6 sm:mb-[75px] sm:gap-8 md:grid-cols-2">
+				<div>
+					<div class="flex flex-row items-center gap-2">
+						<Logo size={80} />
 
-		<div class="mx-auto rounded-xl" id="early-access">
-			<div class="grid grid-cols-1 gap-12 md:grid-cols-2">
-				<form class="space-y-4" on:submit={handleSubmit}>
-					<div>
-						<Input type="text" placeholder="Your Name" class="h-14 w-full rounded-xl text-lg" bind:value={name} required />
+						<h1 class="my-0 text-4xl font-black text-black dark:text-white sm:text-7xl">lubSpace</h1>
 					</div>
-					<div>
-						<Input type="email" placeholder="Your Email" class="h-14 w-full rounded-xl text-lg" bind:value={email} required />
-					</div>
-					<div>
-						<Input
-							type="text"
-							placeholder="Organization/Club Name"
-							class="h-14 w-full rounded-xl text-lg"
-							bind:value={orgName}
-							required
-						/>
-					</div>
-					<Button type="submit" variant="default" class="w-full"
-						>Request Early Access
-						<ArrowRight class="ml-3 h-4 w-4" weight="bold" />
-					</Button>
-				</form>
-				<div class="flex flex-col justify-center">
-					<h2 class="mb-6 text-5xl font-black font-black">Get Early Access</h2>
-					<p class="mb-8 text-lg">Be among the first to experience Klubspace. Sign up for early access today!</p>
+					<p class="mt-2 text-lg text-gray-600 dark:text-gray-300 sm:text-xl"></p>
+				</div>
+				<div class="flex justify-center">
+					<img
+						alt="Organization Management Illustration"
+						src="https://media.istockphoto.com/id/625741228/photo/exchanging-ideas-in-the-boardroom.jpg?s=612x612&w=0&k=20&c=_rF9PqS_sggjBVxKLtGk-Hv8_x4GrmWj3HX6VzqcqV8="
+						class="w-full max-w-md rounded-xl shadow-lg"
+					/>
 				</div>
 			</div>
-		</div>
+
+			<div>
+				<div class="relative">
+					<div class="absolute -left-4 -top-4 h-full w-full rounded-3xl border border-red-500/20 bg-red-50/5"></div>
+					<Card.Root
+						class="relative rounded-2xl border border-neutral-200 bg-white p-6 shadow-lg dark:border-neutral-800 dark:bg-neutral-900 sm:p-8"
+					>
+						<div class="grid grid-cols-1 gap-8 sm:gap-12 md:grid-cols-2">
+							<form class="space-y-4" on:submit={handleSubmit}>
+								<div>
+									<Input
+										type="text"
+										placeholder="Your Name"
+										class="h-12 w-full rounded-xl bg-gray-50 text-base dark:bg-neutral-800 dark:text-white sm:h-14 sm:text-lg"
+										bind:value={name}
+										required
+									/>
+								</div>
+								<div>
+									<Input
+										type="email"
+										placeholder="Your Email"
+										class="h-12 w-full rounded-xl bg-gray-50 text-base dark:bg-neutral-800 dark:text-white sm:h-14 sm:text-lg"
+										bind:value={email}
+										required
+									/>
+								</div>
+								<div>
+									<Input
+										type="text"
+										placeholder="Organization/Club Name"
+										class="h-12 w-full rounded-xl bg-gray-50 text-base dark:bg-neutral-800 dark:text-white sm:h-14 sm:text-lg"
+										bind:value={orgName}
+										required
+									/>
+								</div>
+								<Button
+									type="submit"
+									variant="default"
+									class="w-full text-white transition-opacity hover:opacity-90 dark:bg-red-500 dark:text-white"
+									>Request Early Access
+									<ArrowRight class="ml-3 h-4 w-4" weight="bold" />
+								</Button>
+							</form>
+							<div class="flex flex-col justify-center">
+								<h2 class="mb-4 text-3xl font-black text-black dark:text-white sm:mb-6 sm:text-5xl">Get Early Access</h2>
+								<p class="mb-6 text-base text-gray-600 dark:text-gray-300 sm:mb-8 sm:text-lg">
+									Be among the first to experience Klubspace. Sign up for early access today!
+								</p>
+							</div>
+						</div>
+					</Card.Root>
+				</div>
+			</div>
+		{/if}
 	</section>
 
 	<!-- Features Section -->
-	<section class="mb-10 grid gap-8 md:grid-cols-3" id="services">
-		<Card.Root class="scale-on-hover rounded-[20px] shadow-xl">
-			<Card.Content class="p-8">
-				<div class="mb-6 flex items-center gap-3">
-					<Users class="h-50 w-50 text-blue-600" size={60} weight="fill" />
-					<h3 class="text-2xl font-bold">Organization Management</h3>
-				</div>
-				<ul class="space-y-3">
-					<li class="flex items-center gap-2">
-						<Circle class="h-2 w-2 text-blue-600" weight="fill" />
-						<span>Streamlined member management and roles</span>
-					</li>
-					<li class="flex items-center gap-2">
-						<Circle class="h-2 w-2 text-blue-600" weight="fill" />
-						<span>Resource allocation and tracking</span>
-					</li>
-					<li class="flex items-center gap-2">
-						<Circle class="h-2 w-2 text-blue-600" weight="fill" />
-						<span>Automated organizational workflows</span>
-					</li>
-				</ul>
-			</Card.Content>
-		</Card.Root>
+	<section class="relative mb-16 overflow-hidden py-16 sm:mb-20 sm:py-24" id="services">
+		<div class="absolute left-0 top-0 -z-10 h-full w-full opacity-30">
+			<div class="absolute left-[10%] top-[20%] h-96 w-96 rounded-full bg-red-50 blur-3xl dark:bg-red-900/20"></div>
+			<div class="absolute right-[20%] top-[30%] h-96 w-96 rounded-full bg-red-50 blur-3xl dark:bg-red-900/20"></div>
+		</div>
 
-		<Card.Root class="scale-on-hover rounded-[20px] shadow-lg ">
-			<Card.Content class="p-8">
-				<div class="mb-6 flex items-center gap-3">
-					<ChatCircle class="h-50 w-50 text-red-500" size={60} weight="fill" />
-					<h3 class="text-2xl font-bold">Member Communication</h3>
+		{#if visible}
+			<div class="mb-16 text-center sm:mb-20">
+				<span
+					class="mb-4 inline-block rounded-full bg-neutral-100 px-4 py-1.5 text-sm font-medium text-neutral-900 dark:bg-neutral-800 dark:text-neutral-100"
+					>Our Services</span
+				>
+				<h2
+					class="mx-auto max-w-3xl bg-clip-text text-4xl font-black dark:bg-gradient-to-r dark:from-red-400 dark:from-red-500 dark:to-red-600 dark:to-red-700 dark:text-transparent sm:text-7xl"
+				>
+					Powerful Features for Your Community
+				</h2>
+			</div>
+
+			<div class="grid h-full gap-6 sm:gap-8 md:grid-cols-3">
+				<div class="h-full transform transition-all duration-300 hover:translate-y-[-4px]">
+					<Card.Root class="h-full rounded-[25px] bg-white shadow-lg">
+						<Card.Content class="flex h-full flex-col p-6 sm:p-8">
+							<div class="mb-6 flex items-center gap-3">
+								<div>
+									<Users class="h-12 w-12 text-red-500 sm:h-14 sm:w-14" weight="fill" />
+								</div>
+								<h3 class="text-xl font-bold text-black dark:text-white sm:text-2xl">Organization Management</h3>
+							</div>
+							<ul class="flex-grow space-y-3">
+								<li class="flex items-center gap-2">
+									<Circle class="h-2 w-2 text-gray-400" weight="fill" />
+									<span class="text-sm text-gray-600 dark:text-gray-300 sm:text-base">Streamlined member management and roles</span>
+								</li>
+								<li class="flex items-center gap-2">
+									<Circle class="h-2 w-2 text-gray-400" weight="fill" />
+									<span class="text-sm text-gray-600 dark:text-gray-300 sm:text-base">Resource allocation and tracking</span>
+								</li>
+								<li class="flex items-center gap-2">
+									<Circle class="h-2 w-2 text-gray-400" weight="fill" />
+									<span class="text-sm text-gray-600 dark:text-gray-300 sm:text-base">Automated organizational workflows</span>
+								</li>
+							</ul>
+						</Card.Content>
+					</Card.Root>
 				</div>
-				<ul class="space-y-3">
-					<li class="flex items-center gap-2">
-						<Circle class="h-2 w-2 text-red-500" weight="fill" />
-						<span>Group messaging and announcements</span>
-					</li>
-					<li class="flex items-center gap-2">
-						<Circle class="h-2 w-2 text-red-500" weight="fill" />
-						<span>File sharing and collaboration</span>
-					</li>
-					<li class="flex items-center gap-2">
-						<Circle class="h-2 w-2 text-red-500" weight="fill" />
-						<span>Discussion forums and threads</span>
-					</li>
-				</ul>
-			</Card.Content>
-		</Card.Root>
-		<Card.Root class="scale-on-hover  rounded-[20px] shadow-lg  ">
-			<Card.Content class="p-8">
-				<div class="mb-6 flex items-center gap-3">
-					<Calendar class="h-50 w-50 text-teal-500" size={60} weight="fill" />
-					<h3 class="text-2xl font-bold">Event Planning</h3>
+
+				<div class="h-full transform transition-all duration-300 hover:translate-y-[-4px]">
+					<Card.Root class="h-full rounded-[25px] bg-white shadow-lg">
+						<Card.Content class="flex h-full flex-col p-6 sm:p-8">
+							<div class="mb-6 flex items-center gap-3">
+								<div>
+									<ChatCircle class="h-12 w-12 text-red-500 sm:h-14 sm:w-14" weight="fill" />
+								</div>
+								<h3 class="text-xl font-bold text-black dark:text-white sm:text-2xl">Member Communication</h3>
+							</div>
+							<ul class="flex-grow space-y-3">
+								<li class="flex items-center gap-2">
+									<Circle class="h-2 w-2 text-gray-400" weight="fill" />
+									<span class="text-sm text-gray-600 dark:text-gray-300 sm:text-base">Group messaging and announcements</span>
+								</li>
+								<li class="flex items-center gap-2">
+									<Circle class="h-2 w-2 text-gray-400" weight="fill" />
+									<span class="text-sm text-gray-600 dark:text-gray-300 sm:text-base">File sharing and collaboration</span>
+								</li>
+								<li class="flex items-center gap-2">
+									<Circle class="h-2 w-2 text-gray-400" weight="fill" />
+									<span class="text-sm text-gray-600 dark:text-gray-300 sm:text-base">Discussion forums and threads</span>
+								</li>
+							</ul>
+						</Card.Content>
+					</Card.Root>
 				</div>
-				<ul class="space-y-3">
-					<li class="flex items-center gap-2">
-						<Circle class="h-2 w-2 text-teal-500" weight="fill" />
-						<span>Intuitive event creation and scheduling</span>
-					</li>
-					<li class="flex items-center gap-2">
-						<Circle class="h-2 w-2 text-teal-500" weight="fill" />
-						<span>Attendee management and RSVPs</span>
-					</li>
-					<li class="flex items-center gap-2">
-						<Circle class="h-2 w-2 text-teal-500" weight="fill" />
-						<span>Real-time updates and notifications</span>
-					</li>
-				</ul>
-			</Card.Content>
-		</Card.Root>
+
+				<div class="h-full transform transition-all duration-300 hover:translate-y-[-4px]">
+					<Card.Root class="h-full rounded-[25px] bg-white shadow-lg">
+						<Card.Content class="flex h-full flex-col p-6 sm:p-8">
+							<div class="mb-6 flex items-center gap-3">
+								<div>
+									<Calendar class="h-12 w-12 text-red-500 sm:h-14 sm:w-14" weight="fill" />
+								</div>
+								<h3 class="text-xl font-bold text-black dark:text-white sm:text-2xl">Event Planning</h3>
+							</div>
+							<ul class="flex-grow space-y-3">
+								<li class="flex items-center gap-2">
+									<Circle class="h-2 w-2 text-gray-400" weight="fill" />
+									<span class="text-sm text-gray-600 dark:text-gray-300 sm:text-base">Intuitive event creation and scheduling</span>
+								</li>
+								<li class="flex items-center gap-2">
+									<Circle class="h-2 w-2 text-gray-400" weight="fill" />
+									<span class="text-sm text-gray-600 dark:text-gray-300 sm:text-base">Attendee management and RSVPs</span>
+								</li>
+								<li class="flex items-center gap-2">
+									<Circle class="h-2 w-2 text-gray-400" weight="fill" />
+									<span class="text-sm text-gray-600 dark:text-gray-300 sm:text-base">Real-time updates and notifications</span>
+								</li>
+							</ul>
+						</Card.Content>
+					</Card.Root>
+				</div>
+			</div>
+		{/if}
 	</section>
 
-	<!-- CTA Section -->
-	<!-- <section class="rounded-xl p-12 text-center">
-		<h2 class="mb-6 text-3xl font-bold">Ready to Transform Your Organization?</h2>
-		<p class="mb-8 text-lg text-gray-600">Join thousands of organizations already using Klubspace</p>
-		<Button variant="default" size="lg" href="/#early-access">Sign Up Now</Button>
-	</section> -->
-
 	<!-- About Section -->
-	<section id="about" class="mb-16 py-16">
-		<div class="container mx-auto px-4">
-			<h2 class="mb-12 text-center text-6xl font-black">About</h2>
-			<div class="grid gap-8 md:grid-cols-2">
-				<div class="flex flex-col items-center text-center">
-					<Target weight="fill" size={64} class="mb-4 text-blue-600" />
-					<h3 class="mb-3 text-2xl font-semibold">Our Mission</h3>
-					<p class="">Revolutionizing organization management with seamless, efficient solutions for communities of all sizes.</p>
-				</div>
-				<div class="flex flex-col items-center text-center">
-					<Buildings weight="fill" size={64} class="mb-4 text-purple-600" />
-					<h3 class="mb-3 text-2xl font-semibold">Our Story</h3>
-					<p class="">Built by community leaders for community leaders, combining powerful features with intuitive design.</p>
-				</div>
-			</div>
-			<div class="mt-12 grid gap-6 md:grid-cols-3">
-				<div class="flex flex-col items-center text-center">
-					<Rocket weight="fill" size={48} class="mb-3 text-red-500" />
-					<h4 class="mb-2 text-xl font-semibold">Innovation</h4>
-					<p class="">Always evolving to meet your needs</p>
-				</div>
-				<div class="flex flex-col items-center text-center">
-					<Heart weight="fill" size={48} class="mb-3 text-pink-500" />
-					<h4 class="mb-2 text-xl font-semibold">Community</h4>
-					<p class="">Fostering meaningful connections</p>
-				</div>
-				<div class="flex flex-col items-center text-center">
-					<Sparkle weight="fill" size={48} class="mb-3 text-yellow-500" />
-					<h4 class="mb-2 text-xl font-semibold">Simplicity</h4>
-					<p class="">Making the complex feel simple</p>
-				</div>
-			</div>
+	<section id="about" class="relative mb-12 overflow-hidden py-16 sm:mb-16 sm:py-24">
+		<div class="absolute left-0 top-0 -z-10 h-full w-full opacity-30">
+			<div class="absolute left-[10%] top-[20%] h-96 w-96 rounded-full bg-red-50 blur-3xl dark:bg-red-900/20"></div>
+			<div class="absolute right-[20%] top-[30%] h-96 w-96 rounded-full bg-red-50 blur-3xl dark:bg-red-900/20"></div>
 		</div>
+
+		{#if visible}
+			<div class="mb-16 text-center sm:mb-20">
+				<span
+					class="mb-4 inline-block rounded-full bg-neutral-100 px-4 py-1.5 text-sm font-medium text-neutral-900 dark:bg-neutral-800 dark:text-neutral-100"
+					>About Us</span
+				>
+				<h2
+					class="mx-auto bg-gradient-to-r bg-clip-text text-4xl font-black leading-tight dark:from-red-400 dark:from-red-500 dark:to-red-600 dark:to-red-700 dark:text-transparent sm:text-7xl sm:leading-tight"
+				>
+					Transforming Community Management
+				</h2>
+			</div>
+
+			<div class="z-100 mx-4 mb-16 grid gap-8 sm:mb-24 sm:gap-12 md:grid-cols-2">
+				<div class="relative h-full">
+					<div
+						class=" z-100 absolute -left-4 -top-4 h-full w-full rounded-3xl border border-red-500/20 bg-red-50/5"
+						style="right: -1rem"
+					></div>
+					<div
+						class="relative h-full space-y-4 rounded-2xl border border-neutral-200 bg-white p-6 shadow-lg dark:border-neutral-800 dark:bg-neutral-900 sm:space-y-6 sm:p-8"
+					>
+						<div class="inline-flex rounded-xl bg-red-50 p-3 dark:bg-red-500/10">
+							<Target weight="fill" size={32} class="text-red-500" />
+						</div>
+						<h3 class="text-2xl font-bold text-neutral-900 dark:text-white sm:text-3xl">Our Mission</h3>
+						<p class="text-sm leading-relaxed text-neutral-600 dark:text-neutral-300 sm:text-lg">
+							Revolutionizing organization management with seamless, efficient solutions for communities of all sizes.
+						</p>
+						<div class="flex flex-wrap gap-2">
+							<span class="rounded-full bg-red-50 px-4 py-1 text-sm text-red-600 dark:bg-red-500/10 dark:text-red-400">Innovative</span
+							>
+							<span class="rounded-full bg-red-50 px-4 py-1 text-sm text-red-600 dark:bg-red-500/10 dark:text-red-400">Efficient</span>
+							<span class="rounded-full bg-red-50 px-4 py-1 text-sm text-red-600 dark:bg-red-500/10 dark:text-red-400">Scalable</span>
+						</div>
+					</div>
+				</div>
+
+				<div class="relative h-full">
+					<div class="absolute -left-4 -top-4 h-full w-full rounded-3xl border border-red-500/20 bg-red-50/5"></div>
+					<div
+						class="relative h-full space-y-4 rounded-2xl border border-neutral-200 bg-white p-6 shadow-lg dark:border-neutral-800 dark:bg-neutral-900 sm:space-y-6 sm:p-8"
+					>
+						<div class="inline-flex rounded-xl bg-red-50 p-3 dark:bg-red-500/10">
+							<Buildings weight="fill" size={32} class="text-red-500" />
+						</div>
+						<h3 class="text-2xl font-bold text-neutral-900 dark:text-white sm:text-3xl">Our Story</h3>
+						<p class="text-base leading-relaxed text-neutral-600 dark:text-neutral-300 sm:text-lg">
+							Built by community leaders for community leaders, combining powerful features with intuitive design.
+						</p>
+						<div class="flex flex-wrap gap-2">
+							<span class="rounded-full bg-red-50 px-4 py-1 text-sm text-red-600 dark:bg-red-500/10 dark:text-red-400"
+								>Experienced</span
+							>
+							<span class="rounded-full bg-red-50 px-4 py-1 text-sm text-red-600 dark:bg-red-500/10 dark:text-red-400"
+								>User-Focused</span
+							>
+							<span class="rounded-full bg-red-50 px-4 py-1 text-sm text-red-600 dark:bg-red-500/10 dark:text-red-400">Passionate</span
+							>
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<div class="relative">
+				<div
+					class="absolute inset-0 h-[1px] bg-gradient-to-r from-transparent via-neutral-200 to-transparent dark:via-neutral-800"
+				></div>
+				<div class="grid gap-6 py-12 sm:gap-8 sm:py-16 md:grid-cols-3">
+					<Card.Root
+						class="relative flex h-full items-center gap-4 rounded-[20px]  border border-neutral-200 bg-white p-4 dark:border-neutral-800 dark:bg-neutral-900 sm:p-6"
+					>
+						<div
+							class="absolute inset-0 -z-10 rounded-lg bg-gradient-to-r from-red-500 to-red-600 opacity-0 transition duration-300 hover:opacity-5"
+						></div>
+						<Rocket weight="fill" size={40} class="text-red-500" />
+						<div>
+							<h4 class="text-lg font-bold text-neutral-900 dark:text-white sm:text-xl">Innovation</h4>
+							<p class="text-sm text-neutral-600 dark:text-neutral-300 sm:text-base">Always evolving to meet your needs</p>
+						</div>
+					</Card.Root>
+
+					<Card.Root
+						class="relative flex h-full items-center gap-4 rounded-[20px]  border border-neutral-200 bg-white p-4 dark:border-neutral-800 dark:bg-neutral-900 sm:p-6"
+					>
+						<div
+							class="absolute inset-0 -z-10 rounded-lg bg-gradient-to-r from-red-500 to-red-600 opacity-0 transition duration-300 hover:opacity-5"
+						></div>
+						<Heart weight="fill" size={40} class="text-red-500" />
+						<div>
+							<h4 class="text-lg font-bold text-neutral-900 dark:text-white sm:text-xl">Community</h4>
+							<p class="text-sm text-neutral-600 dark:text-neutral-300 sm:text-base">Fostering meaningful connections</p>
+						</div>
+					</Card.Root>
+
+					<Card.Root
+						class="relative flex h-full items-center gap-4 rounded-[20px]  border border-neutral-200 bg-white p-4 dark:border-neutral-800 dark:bg-neutral-900 sm:p-6"
+					>
+						<div
+							class="absolute inset-0 -z-10 rounded-lg bg-gradient-to-r from-red-500 to-red-600 opacity-0 transition duration-300 hover:opacity-5"
+						></div>
+						<Sparkle weight="fill" size={40} class="text-red-500" />
+						<div>
+							<h4 class="text-lg font-bold text-neutral-900 dark:text-white sm:text-xl">Simplicity</h4>
+							<p class="text-sm text-neutral-600 dark:text-neutral-300 sm:text-base">Making the complex feel simple</p>
+						</div>
+					</Card.Root>
+				</div>
+
+				<div
+					class="absolute bottom-0 h-[1px] w-full bg-gradient-to-r from-transparent via-neutral-200 to-transparent dark:via-neutral-800"
+				></div>
+			</div>
+		{/if}
 	</section>
 
 	<!-- Meet the Founders Section -->
-	<section class="py-24">
+	<section class="relative mb-16 overflow-hidden py-16 sm:mb-20 sm:py-24">
+		<div class="absolute left-0 top-0 -z-10 h-full w-full opacity-30">
+			<div class="absolute left-[10%] top-[20%] h-96 w-96 rounded-full bg-red-50 blur-3xl dark:bg-red-900/20"></div>
+			<div class="absolute right-[20%] top-[30%] h-96 w-96 rounded-full bg-red-50 blur-3xl dark:bg-red-900/20"></div>
+		</div>
+
 		<div class="container mx-auto px-4">
-			<h2 class="mb-16 text-center text-5xl font-black">Meet the Founders</h2>
-			<div class="grid justify-items-center gap-8 md:grid-cols-2">
-				<Card.Root class="scale-on-hover max-w-[400px] rounded-[20px] shadow-lg ">
-					<div class="relative">
-						<img src="/aryah_headshot.jpg" alt="Aryah Oztanir" class="aspect-square h-[400px] w-full rounded-t-[20px] object-cover" />
-						<div class="absolute left-0 right-0 top-0 p-6 text-white">
-							<h3 class="text-2xl font-black">Aryah Oztanir</h3>
-							<div class="mt-2 flex items-center gap-2">
-								<Briefcase weight="fill" size={20} class="text-white" />
-								<p class="text-md">Business Lead</p>
-							</div>
-						</div>
-					</div>
-					<Card.Content class="pt-2">
-						<div class="flex items-start gap-4">
-							<div class="flex-1 space-y-3">
-								<Badge class="rounded-md">
-									<p class="text-xs">Business Lead</p>
-								</Badge>
-								<Badge class="rounded-md bg-purple-100 px-2.5 py-0.5 text-xs font-medium text-purple-800 hover:bg-purple-200">
-									<p class="text-xs">Full Stack Developer</p>
-								</Badge>
-								<p class="text-xs leading-relaxed">
-									Aryah is a passionate entrepreneur with a vision to revolutionize how organizations operate. With extensive
-									experience in software development and a deep understanding of community needs, Aryah brings technical expertise and
-									innovative solutions to help organizations thrive in the digital age.
-								</p>
+			{#if visible}
+				<div class="mb-16 text-center sm:mb-20">
+					<span
+						class="mb-4 inline-block rounded-full bg-neutral-100 px-4 py-1.5 text-sm font-medium text-neutral-900 dark:bg-neutral-800 dark:text-neutral-100"
+						>Our Team</span
+					>
+					<h2
+						class="mx-auto max-w-3xl bg-clip-text text-4xl font-black dark:bg-gradient-to-r dark:from-red-400 dark:from-red-500 dark:to-red-600 dark:to-red-700 dark:text-transparent sm:text-7xl"
+					>
+						Meet the Founders
+					</h2>
+				</div>
 
-								<div class="flex gap-4">
-									<a href="https://linkedin.com/in/aryah-oztanir" class="" target="_blank">
-										<svg class="h-5 w-5" fill="currentColor" viewBox="0 0 24 24">
-											<path
-												d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"
-											/>
-										</svg>
-									</a>
-									<a href="https://aryah.xyz" class="" target="_blank">
-										<svg class="h-5 w-5" fill="currentColor" viewBox="0 0 24 24">
-											<path
-												d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z"
-											/>
-										</svg>
-									</a>
+				<div class="grid justify-items-center gap-6 sm:gap-8 md:grid-cols-2">
+					<div class="mx-auto h-full w-full transform transition-all duration-300 hover:translate-y-[-4px]">
+						<Card.Root class="mx-auto h-full w-full max-w-[400px] rounded-[20px] bg-white  shadow-lg">
+							<div class="relative overflow-hidden">
+								<img
+									src="/aryah_headshot.jpg"
+									alt="Aryah Oztanir"
+									class="aspect-square h-[300px] w-full rounded-t-[20px] object-cover sm:h-[400px]"
+								/>
+								<div class="absolute left-0 right-0 top-0 p-4 text-white sm:p-6">
+									<h3 class="text-xl font-black sm:text-2xl">Aryah Oztanir</h3>
+									<div class="mt-2 flex items-center gap-2">
+										<Briefcase weight="fill" size={20} class="text-white" />
+										<p class="sm:text-md text-sm">Business Lead</p>
+									</div>
 								</div>
 							</div>
-						</div>
-					</Card.Content>
-				</Card.Root>
+							<Card.Content class="pt-2">
+								<div class="flex items-start gap-4">
+									<div class="flex-1 space-y-3">
+										<Badge class="rounded-md bg-red-500 px-2.5 py-0.5 text-xs font-medium text-white">
+											<p class="text-xs">Business Lead</p>
+										</Badge>
+										<Badge
+											class="rounded-md bg-gray-100 px-2.5 py-0.5 text-xs font-medium text-neutral-700 dark:bg-neutral-700 dark:text-white"
+										>
+											<p class="text-xs">Full Stack Developer</p>
+										</Badge>
+										<p class="text-xs leading-relaxed text-gray-600 dark:text-gray-300">
+											Aryah is a passionate entrepreneur with a vision to revolutionize how organizations operate. With extensive
+											experience in software development and a deep understanding of community needs, Aryah brings technical expertise
+											and innovative solutions to build a new and effortless form of club management.
+										</p>
 
-				<Card.Root class="scale-on-hover max-w-[400px] rounded-[20px] shadow-lg">
-					<div class="relative">
-						<img
-							src="https://www.cityheadshots.com/uploads/5/1/2/1/5121840/published/mjb-2089.jpg?1663614946"
-							alt="Thomas Bland"
-							class="aspect-square h-[400px] w-full rounded-t-[20px] object-cover"
-						/>
-						<div class="absolute left-0 right-0 top-0 p-6 text-white">
-							<h3 class="text-2xl font-black">Second Founder</h3>
-							<div class="mt-2 flex items-center gap-2">
-								<Code weight="fill" size={20} class="text-white" />
-								<p class="text-md">Technical Lead</p>
-							</div>
-						</div>
+										<div class="flex gap-4">
+											<a
+												href="https://linkedin.com/in/aryah-oztanir"
+												class="transform transition-transform hover:scale-110"
+												target="_blank"
+											>
+												<svg class="h-5 w-5 text-gray-600 dark:text-gray-300" fill="currentColor" viewBox="0 0 24 24">
+													<path
+														d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"
+													/>
+												</svg>
+											</a>
+											<a href="https://aryah.xyz" class="transform transition-transform hover:scale-110" target="_blank">
+												<svg class="h-5 w-5 text-gray-600 dark:text-gray-300" fill="currentColor" viewBox="0 0 24 24">
+													<path
+														d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z"
+													/>
+												</svg>
+											</a>
+										</div>
+									</div>
+								</div>
+							</Card.Content>
+						</Card.Root>
 					</div>
-					<Card.Content class="h-full pt-2">
-						<div class="flex h-full items-start gap-4">
-							<div class="h-full space-y-3">
-								<Badge class="rounded-md">
-									<p class="text-xs">Technical Lead</p>
-								</Badge>
-								<Badge class="rounded-md bg-purple-100 px-2.5 py-0.5 text-xs font-medium text-purple-800 hover:bg-purple-200">
-									<p class="text-xs">Software Architect</p>
-								</Badge>
-								<p class="text-xs leading-relaxed">
-									An experienced technical leader with a proven track record in building scalable systems. Combining deep technical
-									knowledge with strategic thinking, they drive the technical vision and ensure robust, future-proof solutions for our
-									platform.
-								</p>
 
-								<div class="mb-0 mt-auto flex gap-4">
-									<a href="https://linkedin.com" class="" target="_blank">
-										<svg class="h-5 w-5" fill="currentColor" viewBox="0 0 24 24">
-											<path
-												d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"
-											/>
-										</svg>
-									</a>
-									<a href="https://example.com" class="" target="_blank">
-										<svg class="h-5 w-5" fill="currentColor" viewBox="0 0 24 24">
-											<path
-												d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z"
-											/>
-										</svg>
-									</a>
+					<div class="h-full w-full transform transition-all duration-300 hover:translate-y-[-4px]">
+						<Card.Root class="mx-auto h-full w-full max-w-[400px] rounded-[20px] bg-white shadow-lg">
+							<div class="relative overflow-hidden">
+								<img src="" alt="Thomas Bland" class="aspect-square h-[300px] w-full rounded-t-[20px] object-cover sm:h-[400px]" />
+								<div class="absolute left-0 right-0 top-0 p-4 text-white sm:p-6">
+									<h3 class="text-xl font-black sm:text-2xl">Thomas Bland</h3>
+									<div class="mt-2 flex items-center gap-2">
+										<Code weight="fill" size={20} class="text-white" />
+										<p class="sm:text-md text-sm">Technical Lead</p>
+									</div>
 								</div>
 							</div>
-						</div>
-					</Card.Content>
-				</Card.Root>
-			</div>
+							<Card.Content class="pt-2">
+								<div class="flex items-start gap-4">
+									<div class="flex-1 space-y-3">
+										<Badge class="rounded-md bg-red-500 px-2.5 py-0.5 text-xs font-medium text-white">
+											<p class="text-xs">Technical Lead</p>
+										</Badge>
+										<Badge
+											class="rounded-md bg-gray-100 px-2.5 py-0.5 text-xs font-medium text-neutral-700 dark:bg-neutral-700 dark:text-white"
+										>
+											<p class="text-xs">Software Architect</p>
+										</Badge>
+										<p class="text-xs leading-relaxed text-gray-600 dark:text-gray-300">
+											Thomas is a highly skilled software architect and developer with experience building production grade apps for
+											real clients. After founding AI@UNC, UNC's biggest CS club, he realized the need for a more efficient way to
+											manage clubs and organizations. With a proven track record in building scalable systems, he brings deep technical
+											knowledge and strategic thinking to the table.
+										</p>
+
+										<div class="flex gap-4">
+											<a href="https://linkedin.com" class="transform transition-transform hover:scale-110" target="_blank">
+												<svg class="h-5 w-5 text-gray-600 dark:text-gray-300" fill="currentColor" viewBox="0 0 24 24">
+													<path
+														d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"
+													/>
+												</svg>
+											</a>
+											<a href="https://example.com" class="transform transition-transform hover:scale-110" target="_blank">
+												<svg class="h-5 w-5 text-gray-600 dark:text-gray-300" fill="currentColor" viewBox="0 0 24 24">
+													<path
+														d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z"
+													/>
+												</svg>
+											</a>
+										</div>
+									</div>
+								</div>
+							</Card.Content>
+						</Card.Root>
+					</div>
+				</div>
+			{/if}
 		</div>
 	</section>
 </main>
 
 <Footer />
+
+<style>
+	@keyframes float {
+		0% {
+			transform: translateY(0px);
+		}
+		50% {
+			transform: translateY(-10px);
+		}
+		100% {
+			transform: translateY(0px);
+		}
+	}
+
+	@keyframes beat {
+		0% {
+			transform: scale(1);
+		}
+		50% {
+			transform: scale(1.1);
+		}
+		100% {
+			transform: scale(1);
+		}
+	}
+
+	@keyframes twinkle {
+		0% {
+			opacity: 1;
+		}
+		50% {
+			opacity: 0.5;
+		}
+		100% {
+			opacity: 1;
+		}
+	}
+
+	@keyframes rocket {
+		0% {
+			transform: translateY(0) rotate(0deg);
+		}
+		50% {
+			transform: translateY(-5px) rotate(5deg);
+		}
+		100% {
+			transform: translateY(0) rotate(0deg);
+		}
+	}
+
+	@keyframes bounce-x {
+		0%,
+		100% {
+			transform: translateX(0);
+		}
+		50% {
+			transform: translateX(5px);
+		}
+	}
+
+	@keyframes blob {
+		0% {
+			transform: translate(0, 0) scale(1);
+		}
+		33% {
+			transform: translate(30px, -50px) scale(1.1);
+		}
+		66% {
+			transform: translate(-20px, 20px) scale(0.9);
+		}
+		100% {
+			transform: translate(0, 0) scale(1);
+		}
+	}
+
+	.animate-float {
+		animation: float 3s ease-in-out infinite;
+	}
+	.animate-beat {
+		animation: beat 1.5s ease-in-out infinite;
+	}
+	.animate-twinkle {
+		animation: twinkle 2s ease-in-out infinite;
+	}
+	.animate-rocket {
+		animation: rocket 2s ease-in-out infinite;
+	}
+	.animate-bounce-x {
+		animation: bounce-x 1s infinite;
+	}
+	.animate-blob {
+		animation: blob 7s infinite;
+	}
+	.animation-delay-2000 {
+		animation-delay: 2s;
+	}
+	.animation-delay-4000 {
+		animation-delay: 4s;
+	}
+	.animate-spin-slow {
+		animation: spin 3s linear infinite;
+	}
+	.animate-fade-in {
+		animation: fadeIn 1s ease-in;
+	}
+
+	@keyframes fadeIn {
+		from {
+			opacity: 0;
+		}
+		to {
+			opacity: 1;
+		}
+	}
+
+	@keyframes spin {
+		from {
+			transform: rotate(0deg);
+		}
+		to {
+			transform: rotate(360deg);
+		}
+	}
+</style>

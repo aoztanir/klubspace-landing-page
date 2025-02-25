@@ -8,17 +8,19 @@
 		<div class="grid gap-8 md:grid-cols-3">
 			<div class="space-y-4">
 				<Logo />
-				<p class="text-sm text-gray-600">
+				<p class="text-sm dark:text-neutral-400">
 					Revolutionizing organization management with seamless, efficient solutions for communities of all sizes.
 				</p>
 			</div>
 
 			<div>
 				<h3 class="mb-4 font-semibold">Product</h3>
-				<ul class="space-y-2 text-sm text-gray-600">
-					<li><a href="/#early-access" class="hover:text-gray-900">Early Access</a></li>
-					<li><a href="/#services" class="hover:text-gray-900">Services</a></li>
-					<li><a href="/#about" class="hover:text-gray-900">About</a></li>
+				<ul class="space-y-2 text-sm">
+					<li>
+						<a href="/#early-access" class="hover:text-gray-900 dark:text-neutral-400 dark:hover:text-neutral-200">Early Access</a>
+					</li>
+					<li><a href="/#services" class="hover:text-gray-900 dark:text-neutral-400 dark:hover:text-neutral-200">Services</a></li>
+					<li><a href="/#about" class="hover:text-gray-900 dark:text-neutral-400 dark:hover:text-neutral-200">About</a></li>
 				</ul>
 			</div>
 
@@ -32,16 +34,18 @@
 
 			<div>
 				<h3 class="mb-4 font-semibold">Get in touch</h3>
-				<ul class="space-y-2 text-sm text-gray-600">
+				<ul class="space-y-2 text-sm">
 					<li>
-						<a href="mailto:aoztanir25@gmail.com" class="hover:text-gray-900">Contact Us</a>
+						<a href="mailto:aoztanir25@gmail.com" class="hover:text-gray-900 dark:text-neutral-400 dark:hover:text-neutral-200"
+							>Contact Us</a
+						>
 					</li>
 				</ul>
 			</div>
 		</div>
 
 		<div class="mt-8 pt-8 text-center">
-			<p class="text-sm text-gray-600">&copy; {new Date().getFullYear()} Klubspace. All rights reserved.</p>
+			<p class="text-sm dark:text-neutral-400">&copy; {new Date().getFullYear()} Klubspace. All rights reserved.</p>
 		</div>
 	</div>
 </footer>
