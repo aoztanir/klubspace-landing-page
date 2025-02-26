@@ -82,15 +82,17 @@
 					<div class="flex flex-row items-center gap-2">
 						<Logo size={80} />
 
-						<h1 class="my-0 text-4xl font-black text-black dark:text-white sm:text-7xl">lubSpace</h1>
+						<h1 class="my-0 text-4xl font-black text-black dark:text-white sm:text-7xl md:text-5xl lg:text-6xl">lubSpace</h1>
 					</div>
-					<p class="mt-2 text-lg text-gray-600 dark:text-gray-300 sm:text-xl"></p>
+					<p class="font-100 mt-5 text-lg text-neutral-600 dark:text-neutral-400">
+						Streamline your organization management with our custom-built platform.
+					</p>
 				</div>
 				<div class="flex justify-center">
 					<img
 						alt="Organization Management Illustration"
 						src="https://media.istockphoto.com/id/625741228/photo/exchanging-ideas-in-the-boardroom.jpg?s=612x612&w=0&k=20&c=_rF9PqS_sggjBVxKLtGk-Hv8_x4GrmWj3HX6VzqcqV8="
-						class="w-full max-w-md rounded-xl shadow-lg"
+						class="hidden w-full max-w-md rounded-xl shadow-lg md:block"
 					/>
 				</div>
 			</div>
@@ -140,7 +142,7 @@
 							</form>
 							<div class="flex flex-col justify-center">
 								<h2 class="mb-4 text-3xl font-black text-black dark:text-white sm:mb-6 sm:text-5xl">Get Early Access</h2>
-								<p class="mb-6 text-base text-gray-600 dark:text-gray-300 sm:mb-8 sm:text-lg">
+								<p class="mb-6 text-base text-neutral-600 dark:text-neutral-400 sm:mb-8 sm:text-lg">
 									Be among the first to experience Klubspace. Sign up for early access today!
 								</p>
 							</div>
@@ -402,18 +404,20 @@
 
 				<div class="grid justify-items-center gap-6 sm:gap-8 md:grid-cols-2">
 					<div class="mx-auto h-full w-full transform transition-all duration-300 hover:translate-y-[-4px]">
-						<Card.Root class="mx-auto h-full w-full max-w-[400px] rounded-[20px] bg-white  shadow-lg">
+						<Card.Root class="mx-auto h-full w-full max-w-[400px] rounded-[20px] bg-white shadow-lg">
 							<div class="relative overflow-hidden">
 								<img
 									src="/aryah_headshot.jpg"
 									alt="Aryah Oztanir"
 									class="aspect-square h-[300px] w-full rounded-t-[20px] object-cover sm:h-[400px]"
 								/>
-								<div class="absolute left-0 right-0 top-0 p-4 text-white sm:p-6">
-									<h3 class="text-xl font-black sm:text-2xl">Aryah Oztanir</h3>
+								<div
+									class="absolute left-0 right-0 top-0 rounded-t-[20px] bg-gradient-to-b from-black/50 to-transparent p-4 text-white sm:p-6"
+								>
+									<h3 class="text-xl font-black text-white sm:text-2xl">Aryah Oztanir</h3>
 									<div class="mt-2 flex items-center gap-2">
 										<Briefcase weight="fill" size={20} class="text-white" />
-										<p class="sm:text-md text-sm">Business Lead</p>
+										<p class="sm:text-md text-sm text-white">Business Lead</p>
 									</div>
 								</div>
 							</div>
@@ -463,12 +467,18 @@
 					<div class="h-full w-full transform transition-all duration-300 hover:translate-y-[-4px]">
 						<Card.Root class="mx-auto h-full w-full max-w-[400px] rounded-[20px] bg-white shadow-lg">
 							<div class="relative overflow-hidden">
-								<img src="" alt="Thomas Bland" class="aspect-square h-[300px] w-full rounded-t-[20px] object-cover sm:h-[400px]" />
-								<div class="absolute left-0 right-0 top-0 p-4 text-white sm:p-6">
-									<h3 class="text-xl font-black sm:text-2xl">Thomas Bland</h3>
+								<img
+									src="/thomas_headshot.png"
+									alt="Thomas Bland"
+									class="aspect-square h-[300px] w-full rounded-t-[20px] object-cover sm:h-[400px]"
+								/>
+								<div
+									class="absolute left-0 right-0 top-0 rounded-t-[20px] bg-gradient-to-b from-black/50 to-transparent p-4 text-white sm:p-6"
+								>
+									<h3 class="text-xl font-black text-white sm:text-2xl">Thomas Bland</h3>
 									<div class="mt-2 flex items-center gap-2">
 										<Code weight="fill" size={20} class="text-white" />
-										<p class="sm:text-md text-sm">Technical Lead</p>
+										<p class="sm:text-md text-sm text-white">Technical Lead</p>
 									</div>
 								</div>
 							</div>
