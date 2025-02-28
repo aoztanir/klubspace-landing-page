@@ -7,6 +7,8 @@
 	let { data, children } = $props();
 	let { session, supabase } = $derived(data);
 	import { ModeWatcher } from "mode-watcher";
+	import Header from "$lib/landingPageComponents/header.svelte";
+	import Footer from "$lib/landingPageComponents/footer.svelte";
 
 	onMount(() => {
 		const { data } = supabase.auth.onAuthStateChange((_, newSession) => {
@@ -21,4 +23,6 @@
 
 <Toaster />
 <ModeWatcher />
+<Header />
 {@render children()}
+<Footer />

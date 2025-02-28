@@ -1,6 +1,21 @@
 <script>
 	import { Button } from "$lib/components/ui/button";
 	import Logo from "$lib/Logo/Logo.svelte";
+
+	const productLinks = [
+		{ href: "/#early-access", label: "Early Access" },
+		{ href: "/ambassador-program", label: "Ambassador Program" },
+		{ href: "/#services", label: "Services" },
+		{ href: "/#about", label: "About" },
+	];
+
+	const contactLinks = [{ href: "mailto:aoztanir25@gmail.com", label: "Contact Us" }];
+
+	// Commented out for now
+	// const companyLinks = [
+	// 	{ href: "/privacy", label: "Privacy Policy" },
+	// 	{ href: "/terms", label: "Terms of Service" }
+	// ];
 </script>
 
 <footer class="border-t border-gray-200 py-12 dark:border-neutral-800">
@@ -16,30 +31,31 @@
 			<div>
 				<h3 class="mb-4 font-semibold">Product</h3>
 				<ul class="space-y-2 text-sm">
-					<li>
-						<a href="/#early-access" class="hover:text-gray-900 dark:text-neutral-400 dark:hover:text-neutral-200">Early Access</a>
-					</li>
-					<li><a href="/#services" class="hover:text-gray-900 dark:text-neutral-400 dark:hover:text-neutral-200">Services</a></li>
-					<li><a href="/#about" class="hover:text-gray-900 dark:text-neutral-400 dark:hover:text-neutral-200">About</a></li>
+					{#each productLinks as { href, label }}
+						<li>
+							<a {href} class="hover:text-gray-900 dark:text-neutral-400 dark:hover:text-neutral-200">{label}</a>
+						</li>
+					{/each}
 				</ul>
 			</div>
 
 			<!-- <div>
 				<h3 class="mb-4 font-semibold">Company</h3>
 				<ul class="space-y-2 text-sm text-gray-600">
-					<li><a href="/privacy" class="hover:text-gray-900">Privacy Policy</a></li>
-					<li><a href="/terms" class="hover:text-gray-900">Terms of Service</a></li>
+					{#each companyLinks as {href, label}}
+						<li><a {href} class="hover:text-gray-900">{label}</a></li>
+					{/each}
 				</ul>
 			</div> -->
 
 			<div>
 				<h3 class="mb-4 font-semibold">Get in touch</h3>
 				<ul class="space-y-2 text-sm">
-					<li>
-						<a href="mailto:aoztanir25@gmail.com" class="hover:text-gray-900 dark:text-neutral-400 dark:hover:text-neutral-200"
-							>Contact Us</a
-						>
-					</li>
+					{#each contactLinks as { href, label }}
+						<li>
+							<a {href} class="hover:text-gray-900 dark:text-neutral-400 dark:hover:text-neutral-200">{label}</a>
+						</li>
+					{/each}
 				</ul>
 			</div>
 		</div>

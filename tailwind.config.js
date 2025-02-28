@@ -93,7 +93,7 @@ const config = {
 		},
 	},
 	plugins: [
-		tailwindcssAnimate,
+		require("tailwindcss-animate"),
 		tailwindcssTypography,
 		plugin(function ({ matchUtilities, theme }) {
 			matchUtilities(

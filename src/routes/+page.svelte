@@ -31,15 +31,12 @@
 	import Footer from "$lib/landingPageComponents/footer.svelte";
 	import Logo from "$lib/Logo/Logo.svelte";
 
+	import KlubSpaceAmbassadorSection from "$lib/landingPageComponents/KlubSpaceAmbassadorSection.svelte";
+
 	let name = "";
 	let email = "";
 	let orgName = "";
-	let visible = false;
-
-	// Show content after initial load
-	setTimeout(() => {
-		visible = true;
-	}, 100);
+	let visible = true;
 
 	async function handleSubmit(event: SubmitEvent) {
 		event.preventDefault();
@@ -71,11 +68,9 @@
 	}
 </script>
 
-<Header />
-
-<main class="container relative mx-auto max-w-6xl px-7 py-8 sm:py-12">
+<main class=" relative mx-auto max-w-6xl px-5 py-8 sm:py-12">
 	<!-- Hero Section with Early Access -->
-	<section class="mx-4 mb-16 mt-8 sm:mb-20 sm:mt-16" id="early-access">
+	<section class=" mb-16 mt-8 sm:mb-20 sm:mt-16" id="early-access">
 		{#if visible}
 			<div class="mb-[50px] grid grid-cols-1 items-center gap-6 sm:mb-[75px] sm:gap-8 md:grid-cols-2">
 				<div>
@@ -162,9 +157,9 @@
 
 		{#if visible}
 			<div class="mb-16 text-center sm:mb-20">
-				<span
-					class="mb-4 inline-block rounded-full bg-neutral-100 px-4 py-1.5 text-sm font-medium text-neutral-900 dark:bg-neutral-800 dark:text-neutral-100"
-					>Our Services</span
+				<Badge
+					class="mb-7 inline-block rounded-full bg-neutral-100 px-4 py-1.5 text-sm font-medium text-neutral-900 dark:bg-neutral-800 dark:text-neutral-100"
+					>Our Services</Badge
 				>
 				<h2
 					class="mx-auto max-w-3xl bg-clip-text text-4xl font-black dark:bg-gradient-to-r dark:from-red-400 dark:from-red-500 dark:to-red-600 dark:to-red-700 dark:text-transparent sm:text-7xl"
@@ -267,9 +262,9 @@
 
 		{#if visible}
 			<div class="mb-16 text-center sm:mb-20">
-				<span
-					class="mb-4 inline-block rounded-full bg-neutral-100 px-4 py-1.5 text-sm font-medium text-neutral-900 dark:bg-neutral-800 dark:text-neutral-100"
-					>About Us</span
+				<Badge
+					class="mb-4 rounded-full bg-neutral-100 px-4 py-1.5 text-sm font-medium text-neutral-900 dark:bg-neutral-800 dark:text-neutral-100"
+					>About Us</Badge
 				>
 				<h2
 					class="mx-auto bg-gradient-to-r bg-clip-text text-4xl font-black leading-tight dark:from-red-400 dark:from-red-500 dark:to-red-600 dark:to-red-700 dark:text-transparent sm:text-7xl sm:leading-tight"
@@ -295,10 +290,15 @@
 							Revolutionizing organization management with seamless, efficient solutions for communities of all sizes.
 						</p>
 						<div class="flex flex-wrap gap-2">
-							<span class="rounded-full bg-red-50 px-4 py-1 text-sm text-red-600 dark:bg-red-500/10 dark:text-red-400">Innovative</span
-							>
-							<span class="rounded-full bg-red-50 px-4 py-1 text-sm text-red-600 dark:bg-red-500/10 dark:text-red-400">Efficient</span>
-							<span class="rounded-full bg-red-50 px-4 py-1 text-sm text-red-600 dark:bg-red-500/10 dark:text-red-400">Scalable</span>
+							<Badge class="rounded-lg bg-red-50 px-4 py-1 text-sm text-red-600 dark:bg-red-500/10 dark:text-red-400">
+								<p class="text-sm">Innovative</p>
+							</Badge>
+							<Badge class="rounded-lg bg-red-50 px-4 py-1 text-sm text-red-600 dark:bg-red-500/10 dark:text-red-400">
+								<p class="text-sm">Efficient</p>
+							</Badge>
+							<Badge class="rounded-lg bg-red-50 px-4 py-1 text-sm text-red-600 dark:bg-red-500/10 dark:text-red-400">
+								<p class="text-sm">Scalable</p>
+							</Badge>
 						</div>
 					</div>
 				</div>
@@ -316,14 +316,15 @@
 							Built by community leaders for community leaders, combining powerful features with intuitive design.
 						</p>
 						<div class="flex flex-wrap gap-2">
-							<span class="rounded-full bg-red-50 px-4 py-1 text-sm text-red-600 dark:bg-red-500/10 dark:text-red-400"
-								>Experienced</span
-							>
-							<span class="rounded-full bg-red-50 px-4 py-1 text-sm text-red-600 dark:bg-red-500/10 dark:text-red-400"
-								>User-Focused</span
-							>
-							<span class="rounded-full bg-red-50 px-4 py-1 text-sm text-red-600 dark:bg-red-500/10 dark:text-red-400">Passionate</span
-							>
+							<Badge class="rounded-lg bg-red-50 px-4 py-1 text-sm text-red-600 dark:bg-red-500/10 dark:text-red-400">
+								<p class="text-sm">Experienced</p>
+							</Badge>
+							<Badge class="rounded-lg bg-red-50 px-4 py-1 text-sm text-red-600 dark:bg-red-500/10 dark:text-red-400">
+								<p class="text-sm">User-Focused</p>
+							</Badge>
+							<Badge class="rounded-lg bg-red-50 px-4 py-1 text-sm text-red-600 dark:bg-red-500/10 dark:text-red-400">
+								<p class="text-sm">Passionate</p>
+							</Badge>
 						</div>
 					</div>
 				</div>
@@ -381,6 +382,9 @@
 		{/if}
 	</section>
 
+	<!-- KlubSpace Ambassador Program Section -->
+	<KlubSpaceAmbassadorSection />
+
 	<!-- Meet the Founders Section -->
 	<section class="relative mb-16 overflow-hidden py-16 sm:mb-20 sm:py-24">
 		<div class="absolute left-0 top-0 -z-10 h-full w-full opacity-30">
@@ -388,12 +392,12 @@
 			<div class="absolute right-[20%] top-[30%] h-96 w-96 rounded-full bg-red-50 blur-3xl dark:bg-red-900/20"></div>
 		</div>
 
-		<div class="container mx-auto px-4">
+		<div class=" mx-auto">
 			{#if visible}
 				<div class="mb-16 text-center sm:mb-20">
-					<span
-						class="mb-4 inline-block rounded-full bg-neutral-100 px-4 py-1.5 text-sm font-medium text-neutral-900 dark:bg-neutral-800 dark:text-neutral-100"
-						>Our Team</span
+					<Badge
+						class="mb-7 inline-block rounded-full bg-neutral-100 px-4 py-1.5 text-sm font-medium text-neutral-900 dark:bg-neutral-800 dark:text-neutral-100"
+						>Our Team</Badge
 					>
 					<h2
 						class="mx-auto max-w-3xl bg-clip-text text-4xl font-black dark:bg-gradient-to-r dark:from-red-400 dark:from-red-500 dark:to-red-600 dark:to-red-700 dark:text-transparent sm:text-7xl"
@@ -526,129 +530,3 @@
 		</div>
 	</section>
 </main>
-
-<Footer />
-
-<style>
-	@keyframes float {
-		0% {
-			transform: translateY(0px);
-		}
-		50% {
-			transform: translateY(-10px);
-		}
-		100% {
-			transform: translateY(0px);
-		}
-	}
-
-	@keyframes beat {
-		0% {
-			transform: scale(1);
-		}
-		50% {
-			transform: scale(1.1);
-		}
-		100% {
-			transform: scale(1);
-		}
-	}
-
-	@keyframes twinkle {
-		0% {
-			opacity: 1;
-		}
-		50% {
-			opacity: 0.5;
-		}
-		100% {
-			opacity: 1;
-		}
-	}
-
-	@keyframes rocket {
-		0% {
-			transform: translateY(0) rotate(0deg);
-		}
-		50% {
-			transform: translateY(-5px) rotate(5deg);
-		}
-		100% {
-			transform: translateY(0) rotate(0deg);
-		}
-	}
-
-	@keyframes bounce-x {
-		0%,
-		100% {
-			transform: translateX(0);
-		}
-		50% {
-			transform: translateX(5px);
-		}
-	}
-
-	@keyframes blob {
-		0% {
-			transform: translate(0, 0) scale(1);
-		}
-		33% {
-			transform: translate(30px, -50px) scale(1.1);
-		}
-		66% {
-			transform: translate(-20px, 20px) scale(0.9);
-		}
-		100% {
-			transform: translate(0, 0) scale(1);
-		}
-	}
-
-	.animate-float {
-		animation: float 3s ease-in-out infinite;
-	}
-	.animate-beat {
-		animation: beat 1.5s ease-in-out infinite;
-	}
-	.animate-twinkle {
-		animation: twinkle 2s ease-in-out infinite;
-	}
-	.animate-rocket {
-		animation: rocket 2s ease-in-out infinite;
-	}
-	.animate-bounce-x {
-		animation: bounce-x 1s infinite;
-	}
-	.animate-blob {
-		animation: blob 7s infinite;
-	}
-	.animation-delay-2000 {
-		animation-delay: 2s;
-	}
-	.animation-delay-4000 {
-		animation-delay: 4s;
-	}
-	.animate-spin-slow {
-		animation: spin 3s linear infinite;
-	}
-	.animate-fade-in {
-		animation: fadeIn 1s ease-in;
-	}
-
-	@keyframes fadeIn {
-		from {
-			opacity: 0;
-		}
-		to {
-			opacity: 1;
-		}
-	}
-
-	@keyframes spin {
-		from {
-			transform: rotate(0deg);
-		}
-		to {
-			transform: rotate(360deg);
-		}
-	}
-</style>

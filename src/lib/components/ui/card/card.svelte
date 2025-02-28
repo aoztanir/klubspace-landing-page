@@ -12,7 +12,7 @@
 
 <div
 	class={cn(
-		"rounded-lg border text-card-foreground  shadow-sm dark:border-neutral-800 dark:bg-neutral-900 dark:text-white",
+		"rounded-lg border bg-white  text-card-foreground shadow-md dark:border-neutral-800 dark:bg-neutral-900 dark:text-white",
 		className,
 	)}
 	{...$$restProps}

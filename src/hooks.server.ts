@@ -59,19 +59,19 @@ const supabase: Handle = async ({ event, resolve }) => {
 	});
 };
 
-const authGuard: Handle = async ({ event, resolve }) => {
-	const { session } = await event.locals.safeGetSession();
-	event.locals.session = session;
+// const authGuard: Handle = async ({ event, resolve }) => {
+// 	const { session } = await event.locals.safeGetSession();
+// 	event.locals.session = session;
 
-	if (!event.locals.session && event.url.pathname !== "/" && event.url.pathname !== "/login") {
-		redirect(303, "/login");
-	}
+// 	if (!event.locals.session && event.url.pathname !== "/" && event.url.pathname !== "/login") {
+// 		redirect(303, "/login");
+// 	}
 
-	if (event.locals.session && event.url.pathname === "/login") {
-		redirect(303, "/home");
-	}
+// 	if (event.locals.session && event.url.pathname === "/login") {
+// 		redirect(303, "/home");
+// 	}
 
-	return resolve(event);
-};
+// 	return resolve(event);
+// };
 
-export const handle: Handle = sequence(supabase, authGuard);
+export const handle: Handle = sequence(supabase);
