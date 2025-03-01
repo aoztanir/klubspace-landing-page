@@ -162,7 +162,7 @@
 					<ul class="space-y-2 text-sm text-neutral-600 dark:text-neutral-300 sm:space-y-3 sm:text-base">
 						<li class="flex items-center gap-2">
 							<ArrowRight class="h-3 w-3 text-red-500 sm:h-4 sm:w-4" />
-							Earn 20% commission <span class="italic">(subject to change)</span>
+							Earn 10% commission forever <span class="italic">(subject to change)</span>
 						</li>
 						<li class="flex items-center gap-2">
 							<ArrowRight class="h-3 w-3 text-red-500 sm:h-4 sm:w-4" />

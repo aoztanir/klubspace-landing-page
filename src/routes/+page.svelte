@@ -393,140 +393,144 @@
 		</div>
 
 		<div class=" mx-auto">
-			{#if visible}
-				<div class="mb-16 text-center sm:mb-20">
-					<Badge
-						class="mb-7 inline-block rounded-full bg-neutral-100 px-4 py-1.5 text-sm font-medium text-neutral-900 dark:bg-neutral-800 dark:text-neutral-100"
-						>Our Team</Badge
-					>
-					<h2
-						class="mx-auto max-w-3xl bg-clip-text text-4xl font-black dark:bg-gradient-to-r dark:from-red-400 dark:from-red-500 dark:to-red-600 dark:to-red-700 dark:text-transparent sm:text-7xl"
-					>
-						Meet the Founders
-					</h2>
+			<div class="mb-16 text-center sm:mb-20">
+				<Badge
+					class="mb-7 inline-block rounded-full bg-neutral-100 px-4 py-1.5 text-sm font-medium text-neutral-900 dark:bg-neutral-800 dark:text-neutral-100"
+					>Our Team</Badge
+				>
+				<h2
+					class="mx-auto max-w-3xl bg-clip-text text-4xl font-black dark:bg-gradient-to-r dark:from-red-400 dark:from-red-500 dark:to-red-600 dark:to-red-700 dark:text-transparent sm:text-7xl"
+				>
+					Meet the Founders
+				</h2>
+			</div>
+
+			<div class="grid justify-items-center gap-6 sm:gap-8 md:grid-cols-2">
+				<div class="mx-auto h-full w-full transform transition-all duration-300 hover:translate-y-[-4px]">
+					<Card.Root class="mx-auto h-full w-full max-w-[400px] rounded-[20px] bg-white shadow-lg dark:bg-neutral-900">
+						<div class="relative">
+							<img
+								src="/aryah_headshot.jpg"
+								alt="Aryah Oztanir"
+								class="aspect-square h-[300px] w-full rounded-t-[20px] object-cover sm:h-[400px]"
+							/>
+							<div
+								class="absolute left-0 right-0 top-0 rounded-t-[20px] bg-gradient-to-b from-black/50 to-transparent p-4 text-white sm:p-6"
+							>
+								<h3 class="text-xl font-black text-white sm:text-2xl">Aryah Oztanir</h3>
+								<div class="mt-2 flex items-center gap-2">
+									<Briefcase weight="fill" size={20} class="text-white" />
+									<p class="sm:text-md text-sm text-white">Business Lead</p>
+								</div>
+							</div>
+						</div>
+						<Card.Content class="flex flex-col justify-between p-4">
+							<div class="space-y-3">
+								<div class="flex flex-wrap gap-2">
+									<Badge class="rounded-md bg-red-500 px-2.5 py-0.5 text-xs font-medium text-white">Business Lead</Badge>
+									<Badge
+										class="rounded-md bg-gray-100 px-2.5 py-0.5 text-xs font-medium text-neutral-700 dark:bg-neutral-700 dark:text-white"
+									>
+										Full Stack Developer
+									</Badge>
+								</div>
+								<p class="text-xs leading-relaxed text-gray-600 dark:text-gray-300">
+									Aryah is a passionate entrepreneur with a vision to revolutionize how organizations operate. With extensive
+									experience in software development and a deep understanding of community needs, Aryah brings technical expertise and
+									innovative solutions to build a new and effortless form of club management. At KlubSpace, Aryah handles much of the
+									business-related work, and is the leader of the KlubSpace Ambassador program.
+								</p>
+							</div>
+
+							<div class="mt-4 flex gap-4">
+								<a
+									href="https://linkedin.com/in/aryah-oztanir"
+									class="transform transition-transform hover:scale-110"
+									target="_blank"
+									rel="noopener noreferrer"
+								>
+									<svg class="h-5 w-5 text-gray-600 dark:text-gray-300" fill="currentColor" viewBox="0 0 24 24">
+										<path
+											d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"
+										/>
+									</svg>
+								</a>
+								<a
+									href="https://aryah.xyz"
+									class="transform transition-transform hover:scale-110"
+									target="_blank"
+									rel="noopener noreferrer"
+								>
+									<svg class="h-5 w-5 text-gray-600 dark:text-gray-300" fill="currentColor" viewBox="0 0 24 24">
+										<path
+											d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z"
+										/>
+									</svg>
+								</a>
+							</div>
+						</Card.Content>
+					</Card.Root>
 				</div>
 
-				<div class="grid justify-items-center gap-6 sm:gap-8 md:grid-cols-2">
-					<div class="mx-auto h-full w-full transform transition-all duration-300 hover:translate-y-[-4px]">
-						<Card.Root class="mx-auto h-full w-full max-w-[400px] rounded-[20px] bg-white shadow-lg">
-							<div class="relative overflow-hidden">
-								<img
-									src="/aryah_headshot.jpg"
-									alt="Aryah Oztanir"
-									class="aspect-square h-[300px] w-full rounded-t-[20px] object-cover sm:h-[400px]"
-								/>
-								<div
-									class="absolute left-0 right-0 top-0 rounded-t-[20px] bg-gradient-to-b from-black/50 to-transparent p-4 text-white sm:p-6"
-								>
-									<h3 class="text-xl font-black text-white sm:text-2xl">Aryah Oztanir</h3>
-									<div class="mt-2 flex items-center gap-2">
-										<Briefcase weight="fill" size={20} class="text-white" />
-										<p class="sm:text-md text-sm text-white">Business Lead</p>
+				<div class="h-full w-full transform transition-all duration-300 hover:translate-y-[-4px]">
+					<Card.Root class="mx-auto h-full w-full max-w-[400px] rounded-[20px] bg-white shadow-lg">
+						<div class="relative overflow-hidden">
+							<img
+								src="/thomas_headshot.png"
+								alt="Thomas Bland"
+								class="aspect-square h-[300px] w-full rounded-t-[20px] object-cover sm:h-[400px]"
+							/>
+							<div
+								class="absolute left-0 right-0 top-0 rounded-t-[20px] bg-gradient-to-b from-black/50 to-transparent p-4 text-white sm:p-6"
+							>
+								<h3 class="text-xl font-black text-white sm:text-2xl">Thomas Bland</h3>
+								<div class="mt-2 flex items-center gap-2">
+									<Code weight="fill" size={20} class="text-white" />
+									<p class="sm:text-md text-sm text-white">Technical Lead</p>
+								</div>
+							</div>
+						</div>
+						<Card.Content class="h-full pt-2">
+							<div class="h-ful flex items-start gap-4">
+								<div class="h-full flex-1 space-y-3">
+									<Badge class="rounded-md bg-red-500 px-2.5 py-0.5 text-xs font-medium text-white">
+										<p class="text-xs">Technical Lead</p>
+									</Badge>
+									<Badge
+										class="rounded-md bg-gray-100 px-2.5 py-0.5 text-xs font-medium text-neutral-700 dark:bg-neutral-700 dark:text-white"
+									>
+										<p class="text-xs">Software Architect</p>
+									</Badge>
+									<p class="text-xs leading-relaxed text-gray-600 dark:text-gray-300">
+										Thomas is an experienced software engineer with a passion for creating. After founding AI@UNC, UNC's biggest CS
+										club, he realized the need for a more efficient way to manage clubs and organizations. Using the same skills and
+										experience from building production web applications for real clients, Thomas is bringing his vision for club
+										management software to life with a powerful, user-friendly platform designed to streamline operations, enhance
+										engagement, and simplify club leadership.
+									</p>
+
+									<div class="flex gap-4">
+										<a href="https://linkedin.com" class="transform transition-transform hover:scale-110" target="_blank">
+											<svg class="h-5 w-5 text-gray-600 dark:text-gray-300" fill="currentColor" viewBox="0 0 24 24">
+												<path
+													d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"
+												/>
+											</svg>
+										</a>
+										<a href="https://example.com" class="transform transition-transform hover:scale-110" target="_blank">
+											<svg class="h-5 w-5 text-gray-600 dark:text-gray-300" fill="currentColor" viewBox="0 0 24 24">
+												<path
+													d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z"
+												/>
+											</svg>
+										</a>
 									</div>
 								</div>
 							</div>
-							<Card.Content class="pt-2">
-								<div class="flex items-start gap-4">
-									<div class="flex-1 space-y-3">
-										<Badge class="rounded-md bg-red-500 px-2.5 py-0.5 text-xs font-medium text-white">
-											<p class="text-xs">Business Lead</p>
-										</Badge>
-										<Badge
-											class="rounded-md bg-gray-100 px-2.5 py-0.5 text-xs font-medium text-neutral-700 dark:bg-neutral-700 dark:text-white"
-										>
-											<p class="text-xs">Full Stack Developer</p>
-										</Badge>
-										<p class="text-xs leading-relaxed text-gray-600 dark:text-gray-300">
-											Aryah is a passionate entrepreneur with a vision to revolutionize how organizations operate. With extensive
-											experience in software development and a deep understanding of community needs, Aryah brings technical expertise
-											and innovative solutions to build a new and effortless form of club management.
-										</p>
-
-										<div class="flex gap-4">
-											<a
-												href="https://linkedin.com/in/aryah-oztanir"
-												class="transform transition-transform hover:scale-110"
-												target="_blank"
-											>
-												<svg class="h-5 w-5 text-gray-600 dark:text-gray-300" fill="currentColor" viewBox="0 0 24 24">
-													<path
-														d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"
-													/>
-												</svg>
-											</a>
-											<a href="https://aryah.xyz" class="transform transition-transform hover:scale-110" target="_blank">
-												<svg class="h-5 w-5 text-gray-600 dark:text-gray-300" fill="currentColor" viewBox="0 0 24 24">
-													<path
-														d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z"
-													/>
-												</svg>
-											</a>
-										</div>
-									</div>
-								</div>
-							</Card.Content>
-						</Card.Root>
-					</div>
-
-					<div class="h-full w-full transform transition-all duration-300 hover:translate-y-[-4px]">
-						<Card.Root class="mx-auto h-full w-full max-w-[400px] rounded-[20px] bg-white shadow-lg">
-							<div class="relative overflow-hidden">
-								<img
-									src="/thomas_headshot.png"
-									alt="Thomas Bland"
-									class="aspect-square h-[300px] w-full rounded-t-[20px] object-cover sm:h-[400px]"
-								/>
-								<div
-									class="absolute left-0 right-0 top-0 rounded-t-[20px] bg-gradient-to-b from-black/50 to-transparent p-4 text-white sm:p-6"
-								>
-									<h3 class="text-xl font-black text-white sm:text-2xl">Thomas Bland</h3>
-									<div class="mt-2 flex items-center gap-2">
-										<Code weight="fill" size={20} class="text-white" />
-										<p class="sm:text-md text-sm text-white">Technical Lead</p>
-									</div>
-								</div>
-							</div>
-							<Card.Content class="pt-2">
-								<div class="flex items-start gap-4">
-									<div class="flex-1 space-y-3">
-										<Badge class="rounded-md bg-red-500 px-2.5 py-0.5 text-xs font-medium text-white">
-											<p class="text-xs">Technical Lead</p>
-										</Badge>
-										<Badge
-											class="rounded-md bg-gray-100 px-2.5 py-0.5 text-xs font-medium text-neutral-700 dark:bg-neutral-700 dark:text-white"
-										>
-											<p class="text-xs">Software Architect</p>
-										</Badge>
-										<p class="text-xs leading-relaxed text-gray-600 dark:text-gray-300">
-											Thomas is a highly skilled software architect and developer with experience building production grade apps for
-											real clients. After founding AI@UNC, UNC's biggest CS club, he realized the need for a more efficient way to
-											manage clubs and organizations. With a proven track record in building scalable systems, he brings deep technical
-											knowledge and strategic thinking to the table.
-										</p>
-
-										<div class="flex gap-4">
-											<a href="https://linkedin.com" class="transform transition-transform hover:scale-110" target="_blank">
-												<svg class="h-5 w-5 text-gray-600 dark:text-gray-300" fill="currentColor" viewBox="0 0 24 24">
-													<path
-														d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"
-													/>
-												</svg>
-											</a>
-											<a href="https://example.com" class="transform transition-transform hover:scale-110" target="_blank">
-												<svg class="h-5 w-5 text-gray-600 dark:text-gray-300" fill="currentColor" viewBox="0 0 24 24">
-													<path
-														d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z"
-													/>
-												</svg>
-											</a>
-										</div>
-									</div>
-								</div>
-							</Card.Content>
-						</Card.Root>
-					</div>
+						</Card.Content>
+					</Card.Root>
 				</div>
-			{/if}
+			</div>
 		</div>
 	</section>
 </main>
