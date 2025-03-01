@@ -141,7 +141,7 @@
 		<h2
 			class="mx-auto bg-gradient-to-r bg-clip-text text-4xl font-black leading-tight dark:from-red-400 dark:from-red-500 dark:to-red-600 dark:to-red-700 dark:text-transparent sm:text-7xl sm:leading-tight"
 		>
-			24-25' Cohort Ambassadors
+			25-26' Cohort Ambassadors
 		</h2>
 		<p class="mt-2 text-base text-neutral-600 dark:text-neutral-400 sm:mt-4 sm:text-lg">
 			Join our mission to transform campus organizations
