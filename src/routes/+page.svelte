@@ -32,6 +32,7 @@
 	import Logo from "$lib/Logo/Logo.svelte";
 
 	import KlubSpaceAmbassadorSection from "$lib/landingPageComponents/KlubSpaceAmbassadorSection.svelte";
+	import GrowthStatisticsSection from "$lib/landingPageComponents/GrowthStatisticsSection.svelte";
 
 	let name = "";
 	let email = "";
@@ -148,8 +149,10 @@
 		{/if}
 	</section>
 
+	<GrowthStatisticsSection />
+
 	<!-- Features Section -->
-	<section class="relative mb-16 overflow-hidden py-16 sm:mb-20 sm:py-24" id="services">
+	<section class="relative mb-16 overflow-hidden sm:mb-20 sm:py-24" id="services">
 		<div class="absolute left-0 top-0 -z-10 h-full w-full opacity-30">
 			<div class="absolute left-[10%] top-[20%] h-96 w-96 rounded-full bg-red-50 blur-3xl dark:bg-red-900/20"></div>
 			<div class="absolute right-[20%] top-[30%] h-96 w-96 rounded-full bg-red-50 blur-3xl dark:bg-red-900/20"></div>
