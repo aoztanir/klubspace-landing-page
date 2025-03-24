@@ -4,7 +4,7 @@
 	import * as Card from "$lib/components/ui/card";
 </script>
 
-<section class="my-16 pt-20 sm:my-20">
+<section class="my-16 pt-20 sm:my-20" id="impact">
 	<div class="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
 		<div class="mb-10 text-center">
 			<Badge
