@@ -7,15 +7,23 @@
 		{ href: "/ambassador-program", label: "Ambassador Program" },
 		{ href: "/#services", label: "Services" },
 		{ href: "/#about", label: "About" },
+		{ href: "/#impact", label: "Our Impact" },
+		{ href: "/#pitch", label: "For Investors" },
 	];
 
-	const contactLinks = [{ href: "mailto:aoztanir25@gmail.com", label: "Contact Us" }];
+	const contactLinks = [
+		{ href: "mailto:aoztanir25@gmail.com", label: "Contact Us" },
+		// { href: "https://twitter.com/klubspace", label: "Twitter" },
+		// { href: "https://linkedin.com/company/klubspace", label: "LinkedIn" },
+		// { href: "https://instagram.com/klubspace", label: "Instagram" },
+	];
 
-	// Commented out for now
-	// const companyLinks = [
-	// 	{ href: "/privacy", label: "Privacy Policy" },
-	// 	{ href: "/terms", label: "Terms of Service" }
-	// ];
+	const companyLinks = [
+		{ href: "/privacy", label: "Privacy Policy" },
+		{ href: "/terms", label: "Terms of Service" },
+		{ href: "/team", label: "Meet the Team" },
+		{ href: "/careers", label: "Careers" },
+	];
 </script>
 
 <footer class="border-t border-gray-200 py-12 dark:border-neutral-800">
@@ -41,9 +49,9 @@
 
 			<!-- <div>
 				<h3 class="mb-4 font-semibold">Company</h3>
-				<ul class="space-y-2 text-sm text-gray-600">
-					{#each companyLinks as {href, label}}
-						<li><a {href} class="hover:text-gray-900">{label}</a></li>
+				<ul class="space-y-2 text-sm text-gray-600 dark:text-neutral-400">
+					{#each companyLinks as { href, label }}
+						<li><a {href} class="hover:text-gray-900 dark:hover:text-neutral-200">{label}</a></li>
 					{/each}
 				</ul>
 			</div> -->

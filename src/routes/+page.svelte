@@ -33,6 +33,7 @@
 
 	import KlubSpaceAmbassadorSection from "$lib/landingPageComponents/KlubSpaceAmbassadorSection.svelte";
 	import GrowthStatisticsSection from "$lib/landingPageComponents/GrowthStatisticsSection.svelte";
+	import ForInvestorsSection from "$lib/landingPageComponents/ForInvestorsSection.svelte";
 
 	let name = "";
 	let email = "";
@@ -387,6 +388,8 @@
 
 	<!-- KlubSpace Ambassador Program Section -->
 	<KlubSpaceAmbassadorSection />
+
+	<ForInvestorsSection />
 
 	<!-- Meet the Founders Section -->
 	<section class="relative mb-16 overflow-hidden py-16 sm:mb-20 sm:py-24">

@@ -12,7 +12,11 @@
 			>
 				Our Impact
 			</Badge>
-			<h2 class="text-3xl font-black tracking-tight dark:text-white sm:text-6xl">Growing Across Campuses</h2>
+			<h2
+				class="mx-auto bg-gradient-to-r bg-clip-text text-4xl font-black leading-tight dark:from-red-400 dark:from-red-500 dark:to-red-600 dark:to-red-700 dark:text-transparent sm:text-7xl sm:leading-tight"
+			>
+				Growing Across Campuses
+			</h2>
 			<p class="mx-auto mt-4 max-w-2xl text-base text-neutral-500 dark:text-neutral-400">
 				KlubSpace is transforming how student organizations operate, starting at UNC and expanding nationwide.
 			</p>
